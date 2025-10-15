@@ -1,7 +1,4 @@
-print(f'{'_'*19}')
-print(f'|{' '*17}|')
-print('|  HALAMAN LOGIN  |')
-print(f'|{'_'*17}|\n')
+import os
 
 username = 'Muja'
 password = '059'
@@ -17,6 +14,12 @@ o_pos = 0
 o_neg = 0
 
 while True:
+    os.system('cls')
+    print(f'{'_'*19}')
+    print(f'|{' '*17}|')
+    print('|  HALAMAN LOGIN  |')
+    print(f'|{'_'*17}|\n')
+
     u = input('Masukkan Username: ').strip().capitalize()
     p = input('Masukkan Password: ').strip()
 
@@ -34,6 +37,7 @@ while True:
         print('Password salah!\n')
 
 while True:
+    os.system('cls')
     print(f'\n{'_'*31}')
     print(f'|{' '*29}|')
     print('|  SEDOT DARAH DENIS (* 3 *)  |')
@@ -122,6 +126,7 @@ total_kantong = total_ml // 500
 ringkasan = f'|TOTAL: {total_kantong} kantong ({total_ml} ml)|'
 total = len(ringkasan)
 
+os.system('cls')
 print(f'_{'_'*total}_')
 print(f'|{f'RINGKASAN TOTAL DARAH DENIS':<{total}}|')
 print(f'|{'_' * total}|')
