@@ -296,8 +296,9 @@ while True:
                                             continue
 
                                         else:
+                                            nama_lama = senjata[id_terpilih]['nama']
                                             senjata[id_terpilih]['nama'] = nama_baru
-                                            print(f'|{f'{nama} telah diubah menjadi {nama_baru}':^{105}}|')
+                                            print(f'|{f'{nama_lama} telah diubah menjadi {nama_baru}':^{105}}|')
                                             print(tengah)
 
                                             reset = input('|Enter untuk kembali ke menu ...')
