@@ -56,9 +56,6 @@ huruf_dict = {
     'D': huruf_D
 }
 
-panjang = f'|{' '*105}|'
-tengah =  f'|{'_'*105}|'
-atas = f'{'_'*107}'
 
 
 senjata = {}
@@ -66,6 +63,11 @@ next_id_senjata = 1
 next_id_senjata_m = 1
 
 data_murid = {}
+
+panjang = f'|{' '*105}|'
+tengah =  f'|{'_'*105}|'
+atas = f'{'_'*107}'
+
 
 while True:
     os.system('cls || clear')
@@ -203,6 +205,7 @@ while True:
                         continue
 
                 elif pilihan == '3':
+
                     if len(senjata) == 0:
                         print(panjang)
                         print(f'|{'Belum ada senjata':^{105}}|')
@@ -215,48 +218,23 @@ while True:
                         continue
 
                     else:
-                        os.system('cls || clear')
-                        print(atas)
-                        print(panjang)
-                        print(f'|{'Blacksmith Table':^{105}}|')
-                        print(panjang)
-                        print(tengah)
-
-                        for i, (id, s) in enumerate(senjata.items(), start=1):
-                            print(f'|{f'{i}. {s['nama']} | ATK: {s['atk']} | ASPD: {s['aspd']} | CRIT: {s['crit']}%':<{105}}|')
-                        print(panjang)
-                        
-                        ubah = input('|Masukkan nomor senjata yang ingin diubah: ').strip()
-                        print('\033[F', end='')   
-                        print(f'|Masukkan nomor senjata yang ingin diubah: {ubah:<{63}}|')        
-                        
-                        if not ubah.isdigit() or int(ubah) <= 0 or int(ubah) > len(senjata):
-                            print(tengah)
+                            os.system('cls || clear')
+                            print(atas)
                             print(panjang)
-                            print(f'|{'Pilihan tidak tersedia!':^{105}}|')
-                            print(tengah)
-                            reset = input('|Enter untuk kembali ke menu ...')
-                            print('\033[F', end='')   
-                            print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
-                            print(tengah)
-                            sleep(1)
-                            continue
-
-                        else:
-                            ubah = int(ubah)
-                            print(tengah)
-                            print(f'|{'1. Ubah nama':<{105}}|' + f'\n|{'2. Ubah ATK':<{105}}|' + f'\n|{'3. Ubah ASPD':<{105}}|' + f'\n|{'4. Ubah %CRIT':<{105}}|')
+                            print(f'|{'Blacksmith Table':^{105}}|')
                             print(panjang)
-
-                            ubah2 = input('|Apa yang ingin diubah (1|2|3|4): ').strip()
-                            print('\033[F', end='')   
-                            print(f'|Apa yang ingin diubah (1|2|3|4): {ubah2:<{72}}|')
                             print(tengah)
-                            sleep(1)
 
-                            if ubah2 not in ['1','2','3','4']:
-                                os.system('cls || clear')
-                                print(atas)
+                            for i, (id, s) in enumerate(senjata.items(), start=1):
+                                print(f'|{f'{i}. {s['nama']} | ATK: {s['atk']} | ASPD: {s['aspd']} | CRIT: {s['crit']}%':<{105}}|')
+                            print(panjang)
+                            
+                            ubah = input('|Masukkan nomor senjata yang ingin diubah: ').strip()
+                            print('\033[F', end='')   
+                            print(f'|Masukkan nomor senjata yang ingin diubah: {ubah:<{63}}|')        
+                            
+                            if not ubah.isdigit() or int(ubah) <= 0 or int(ubah) > len(senjata):
+                                print(tengah)
                                 print(panjang)
                                 print(f'|{'Pilihan tidak tersedia!':^{105}}|')
                                 print(tengah)
@@ -268,144 +246,173 @@ while True:
                                 continue
 
                             else:
-                                if ubah2 == '1':
+                                ubah = int(ubah)
+                                id_terpilih = list(senjata.keys())[ubah - 1]
+                                print(tengah)
+                                print(f'|{'1. Ubah nama':<{105}}|' + f'\n|{'2. Ubah ATK':<{105}}|' + f'\n|{'3. Ubah ASPD':<{105}}|' + f'\n|{'4. Ubah %CRIT':<{105}}|')
+                                print(panjang)
+
+                                ubah2 = input('|Apa yang ingin diubah (1|2|3|4): ').strip()
+                                print('\033[F', end='')   
+                                print(f'|Apa yang ingin diubah (1|2|3|4): {ubah2:<{72}}|')
+                                print(tengah)
+                                sleep(1)
+
+                                if ubah2 not in ['1','2','3','4']:
+                                    os.system('cls || clear')
+                                    print(atas)
+                                    print(panjang)
+                                    print(f'|{'Pilihan tidak tersedia!':^{105}}|')
                                     print(tengah)
-                                    print(panjang)
-                                    nama_baru = input('|Nama baru: ').title()
+                                    reset = input('|Enter untuk kembali ke menu ...')
                                     print('\033[F', end='')   
-                                    print(f'|Nama baru: {nama_baru:<{94}}|')
-                                    print(panjang)
-
-                                    if nama_baru.strip() == '' or len(nama_baru) > 70:
-                                        print(tengah)
-                                        print(panjang)
-                                        print(f'|{'GAGAL MENGUBAH NAMA!':^{105}}|')
-                                        print(tengah)
-                                        print(panjang)
-                                        print(f'|{'Nama tidak boleh kosong dan tidak boleh melebihi 70 karakter!':^{105}}|')
-                                        print(panjang)
-                                        reset = input('|Enter untuk kembali ke menu ...')
-                                        print('\033[F', end='')   
-                                        print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
-                                        print(tengah)
-                                        sleep(1)
-                                        continue
-
-                                    else:
-                                        senjata[ubah]['nama'] = nama_baru
-                                        print(f'|{f'{nama} telah diubah menjadi {nama_baru}':^{105}}|')
-                                        print(tengah)
-
-                                        reset = input('|Enter untuk kembali ke menu ...')
-                                        print('\033[F', end='')   
-                                        print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
-                                        print(tengah)
-                                        sleep(1)
-                                        continue
-
-                                elif ubah2 == '2':
+                                    print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
                                     print(tengah)
-                                    print(panjang)
-                                    nilai = input('|Masukkan nilai baru ATK: ').strip()
-                                    print('\033[F', end='')   
-                                    print(f'|Masukkan nilai baru ATK: {nilai:<{80}}|')
-                                    print(panjang)
-                                
+                                    sleep(1)
+                                    continue
 
-                                    if not nilai.isdigit() or int(nilai) > 999:
-                                        print(tengah)
-                                        print(panjang)
-                                        print(f'|{'GAGAL MENGUBAH ATK!':^{105}}|')
-                                        print(tengah)
-                                        print(panjang)
-                                        print(f'|{'Atribut harus berupa angka bulat positif dan tidak boleh melebihi angka 999!':^{105}}|')
-                                        print(panjang)
-                                        reset = input('|Enter untuk kembali ke menu ...')
-                                        print('\033[F', end='')   
-                                        print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
-                                        print(tengah)
-                                        sleep(1)
-                                        continue
-
-                                    else:
-                                        senjata[ubah]['atk'] = int(nilai)
-                                        print(f'|{f'ATK : {atk} telah diubah menjadi {nilai}':^{105}}|')
-
-                                        print(tengah)
-                                        reset = input('|Enter untuk kembali ke menu ...')
-                                        print('\033[F', end='')   
-                                        print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
-                                        print(tengah)
-                                        sleep(1)
-                                        continue              
-
-                                elif ubah2 == '3':
-                                    print(tengah)
-                                    print(panjang)
-                                    nilai = input('|Masukkan nilai baru ASPD: ').strip()
-                                    print('\033[F', end='')   
-                                    print(f'|Masukkan nilai baru ASPD: {nilai:<{79}}|')
-                                    print(panjang)
-
-                                    if not nilai.isdigit() or int(nilai) > 999:
-                                        print(tengah)
-                                        print(panjang)
-                                        print(f'|{'GAGAL MENGUBAH ASPD!':^{105}}|')
-                                        print(tengah)
-                                        print(panjang)
-                                        print(f'|{'Atribut harus berupa angka bulat positif dan tidak boleh melebihi angka 999!':^{105}}|')
-                                        print(panjang)
-                                        reset = input('|Enter untuk kembali ke menu ...')
-                                        print('\033[F', end='')   
-                                        print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
-                                        print(tengah)
-                                        sleep(1)
-                                        continue
-
-                                    else:
-                                        senjata[ubah]['aspd'] = int(nilai)
-                                        print(f'|{f'ASPD : {aspd} telah diubah menjadi {nilai}':^{105}}|')
-                                        print(tengah)
-                                        reset = input('|Enter untuk kembali ke menu ...')
-                                        print('\033[F', end='')   
-                                        print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
-                                        print(tengah)
-                                        sleep(1)
-                                        continue 
-                                    
                                 else:
-                                    print(tengah)
-                                    print(panjang)
-                                    nilai = input('|Masukkan nilai baru CRIT: ').strip()
-                                    print('\033[F', end='')   
-                                    print(f'|Masukkan nilai baru CRIT: {nilai:<{79}}|')
-                                    print(panjang)
-
-                                    if not nilai.isdigit() or int(nilai) > 100:
+                                    if ubah2 == '1':
                                         print(tengah)
                                         print(panjang)
-                                        print(f'|{'GAGAL MENGUBAH CRIT!':^{105}}|')
-                                        print(tengah)
-                                        print(panjang)
-                                        print(f'|{'Atribut harus berupa angka bulat positif dan batas CRIT 100%!':^{105}}|')
-                                        print(panjang)
-                                        reset = input('|Enter untuk kembali ke menu ...')
+                                        nama_baru = input('|Nama baru: ').title()
                                         print('\033[F', end='')   
-                                        print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
-                                        print(tengah)
-                                        sleep(1)
-                                        continue
+                                        print(f'|Nama baru: {nama_baru:<{94}}|')
+                                        print(panjang)
 
+                                        if nama_baru.strip() == '' or len(nama_baru) > 70:
+                                            print(tengah)
+                                            print(panjang)
+                                            print(f'|{'GAGAL MENGUBAH NAMA!':^{105}}|')
+                                            print(tengah)
+                                            print(panjang)
+                                            print(f'|{'Nama tidak boleh kosong dan tidak boleh melebihi 70 karakter!':^{105}}|')
+                                            print(panjang)
+                                            reset = input('|Enter untuk kembali ke menu ...')
+                                            print('\033[F', end='')   
+                                            print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
+                                            print(tengah)
+                                            sleep(1)
+                                            continue
+
+                                        else:
+                                            senjata[id_terpilih]['nama'] = nama_baru
+                                            print(f'|{f'{nama} telah diubah menjadi {nama_baru}':^{105}}|')
+                                            print(tengah)
+
+                                            reset = input('|Enter untuk kembali ke menu ...')
+                                            print('\033[F', end='')   
+                                            print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
+                                            print(tengah)
+                                            sleep(1)
+                                            continue
+
+                                    elif ubah2 == '2':
+                                        print(tengah)
+                                        print(panjang)
+                                        nilai = input('|Masukkan nilai baru ATK: ').strip()
+                                        print('\033[F', end='')   
+                                        print(f'|Masukkan nilai baru ATK: {nilai:<{80}}|')
+                                        print(panjang)
+                                    
+
+                                        if not nilai.isdigit() or int(nilai) > 999:
+                                            print(tengah)
+                                            print(panjang)
+                                            print(f'|{'GAGAL MENGUBAH ATK!':^{105}}|')
+                                            print(tengah)
+                                            print(panjang)
+                                            print(f'|{'Atribut harus berupa angka bulat positif dan tidak boleh melebihi angka 999!':^{105}}|')
+                                            print(panjang)
+                                            reset = input('|Enter untuk kembali ke menu ...')
+                                            print('\033[F', end='')   
+                                            print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
+                                            print(tengah)
+                                            sleep(1)
+                                            continue
+
+                                        else:
+                                           atk_lama = senjata[id_terpilih]['atk']
+                                           senjata[id_terpilih]['atk'] = int(nilai)
+                                           print(f'|{f'ATK : {atk_lama} telah diubah menjadi {nilai}':^{105}}|')
+
+                                           print(tengah)
+                                           reset = input('|Enter untuk kembali ke menu ...')
+                                           print('\033[F', end='')   
+                                           print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
+                                           print(tengah)
+                                           sleep(1)
+                                           continue              
+
+                                    elif ubah2 == '3':
+                                        print(tengah)
+                                        print(panjang)
+                                        nilai = input('|Masukkan nilai baru ASPD: ').strip()
+                                        print('\033[F', end='')   
+                                        print(f'|Masukkan nilai baru ASPD: {nilai:<{79}}|')
+                                        print(panjang)
+
+                                        if not nilai.isdigit() or int(nilai) > 999:
+                                            print(tengah)
+                                            print(panjang)
+                                            print(f'|{'GAGAL MENGUBAH ASPD!':^{105}}|')
+                                            print(tengah)
+                                            print(panjang)
+                                            print(f'|{'Atribut harus berupa angka bulat positif dan tidak boleh melebihi angka 999!':^{105}}|')
+                                            print(panjang)
+                                            reset = input('|Enter untuk kembali ke menu ...')
+                                            print('\033[F', end='')   
+                                            print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
+                                            print(tengah)
+                                            sleep(1)
+                                            continue
+
+                                        else:
+                                           aspd_lama = senjata[id_terpilih]['aspd']
+                                           senjata[id_terpilih]['aspd'] = int(nilai)
+                                           print(f'|{f'ASPD : {aspd_lama} telah diubah menjadi {nilai}':^{105}}|')
+                                           print(tengah)
+                                           reset = input('|Enter untuk kembali ke menu ...')
+                                           print('\033[F', end='')   
+                                           print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
+                                           print(tengah)
+                                           sleep(1)
+                                           continue 
+                                        
                                     else:
-                                        senjata[ubah]['crit'] = int(nilai)
-                                        print(f'|{f'CRIT : {crit}% telah diubah menjadi {nilai}%':^{105}}|')
                                         print(tengah)
-                                        reset = input('|Enter untuk kembali ke menu ...')
+                                        print(panjang)
+                                        nilai = input('|Masukkan nilai baru CRIT: ').strip()
                                         print('\033[F', end='')   
-                                        print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
-                                        print(tengah)
-                                        sleep(1)
-                                        continue 
+                                        print(f'|Masukkan nilai baru CRIT: {nilai:<{79}}|')
+                                        print(panjang)
+
+                                        if not nilai.isdigit() or int(nilai) > 100:
+                                            print(tengah)
+                                            print(panjang)
+                                            print(f'|{'GAGAL MENGUBAH CRIT!':^{105}}|')
+                                            print(tengah)
+                                            print(panjang)
+                                            print(f'|{'Atribut harus berupa angka bulat positif dan batas CRIT 100%!':^{105}}|')
+                                            print(panjang)
+                                            reset = input('|Enter untuk kembali ke menu ...')
+                                            print('\033[F', end='')   
+                                            print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
+                                            print(tengah)
+                                            sleep(1)
+                                            continue
+
+                                        else:
+                                           crit_lama = senjata[id_terpilih]['crit']
+                                           senjata[id_terpilih]['crit'] = int(nilai)
+                                           print(f'|{f'CRIT : {crit_lama}% telah diubah menjadi {nilai}%':^{105}}|')
+                                           print(tengah)
+                                           reset = input('|Enter untuk kembali ke menu ...')
+                                           print('\033[F', end='')   
+                                           print(f'|Enter untuk kembali ke menu ...{reset:<{74}}|')
+                                           print(tengah)
+                                           sleep(1)
+                                           continue 
 
                 elif pilihan == '4':
                         
@@ -449,9 +456,10 @@ while True:
                                 continue
 
                             else:
+                                id_terpilih = list(senjata.keys())[int(hapus) - 1]
                                 print(panjang)
-                                print(f'|{f'Senjata {senjata[int(hapus)]['nama']} telah dihancurkan.':^{105}}|')
-                                senjata.pop(int(hapus))
+                                print(f'|{f'Senjata {senjata[int(id_terpilih)]['nama']} telah dihancurkan.':^{105}}|')
+                                senjata.pop(id_terpilih)
 
                                 print(tengah)
                                 reset = input('|Enter untuk kembali ke menu ...')
@@ -554,10 +562,10 @@ while True:
                     print(f'|Berikan Ore ke murid  : {ore:<{81}}|')
                     iron = input('|Berikan Iron ke murid : ').strip().replace(' ', '')
                     print('\033[F', end='')   
-                    print(f'|Berikan Iron ke murid : {ore:<{81}}|')
+                    print(f'|Berikan Iron ke murid : {iron:<{81}}|')
                     print(panjang)
 
-                    if not ore.isdigit or not iron.isdigit or int(iron) > 1000 or int(ore) > 1000:
+                    if not ore.isdigit() or not iron.isdigit() or int(iron) > 1000 or int(ore) > 1000:
                         print(tengah)
                         print(f'|{'Masukkan bilangan bulat positif!':^{105}}|' + f'\n|{'Batas Ore dan Iron yang dapat diberikan adalah 1000!':^{105}}|')
                         print(tengah)
@@ -770,7 +778,7 @@ while True:
 
                             if pilih_attr not in ['1','2','3','4']:
                                 print(panjang)
-                                print(f'|{'Pilihan tidak tersedia!':<{105}}|')
+                                print(f'|{'Pilihan tidak tersedia!':^{105}}|')
                                 print(tengah)
                                 reset = input('|Enter untuk kembali ke menu ...')
                                 print('\033[F', end='')   
@@ -962,6 +970,7 @@ while True:
                     break
                 else:
                     os.system('cls || clear')
+                    print(atas)
                     print(panjang)
                     print(f'|{'PILIHAN TIDAK TERSEDIA!':^{105}}|')
                     print(tengah)
