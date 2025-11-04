@@ -63,19 +63,25 @@ next_id_senjata = 1
 next_id_senjata_m = 1
 
 data_murid = {}
+BY = "\033[1;33m"
+RESET = "\033[0m"
+YELLOW = "\033[33m"
+CYAN = "\033[35m"
 
-panjang = f'|{' '*105}|'
-tengah =  f'|{'_'*105}|'
-atas = f'{'_'*107}'
+P = f'{BY}|{RESET}'
+
+panjang = f'{P}{' '*105}{P}'
+tengah =  f'{BY}|{'_'*105}|{RESET}'
+atas = f'{BY}{'_'*107}{RESET}'
 
 
 while True:
     os.system('cls || clear')
     print(atas)
     print(panjang)
-    print(f'|{'THE BLACKSMITH':^{105}}|')
+    print(f'{P}{'THE BLACKSMITH':^{105}}{P}')
     print(tengah)
-    print(f'|{'Through fire and hammer, the blacksmith shapes the world.':^{105}}|' + f'\n|{'Are You One Of Us?':^{105}}|')
+    print(f'{BY}|{CYAN}{'Through fire and hammer, the blacksmith shapes the world.':^{105}}|' + f'\n|{'Are You One Of Us?':^{105}}{RESET}|{BY}')
     print(f'|{'1. Master':<{105}}|' + f'\n|{'2. Murid':<{105}}|' + f'\n|{'3. Daftar Sebagai Murid':<{105}}|' + f'\n|{'4. Log Out':<{105}}|')
     print(panjang)
 
