@@ -64,6 +64,7 @@ panjang = f'|{' '*105}|'
 tengah =  f'|{'_'*105}|'
 atas = f'{'_'*107}'
 
+
 RESET = "\033[0m"
 BOLD = "\033[1m"
 GOLD = "\033[93m"

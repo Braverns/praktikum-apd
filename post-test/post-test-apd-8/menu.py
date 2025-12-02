@@ -3,7 +3,6 @@ import os
 from data import *
 from prettytable import PrettyTable
 
-
 def pretable(judul, isi1, isi2,space, space2, isi3, isi4, isi5, isi6, warna1, warna2, warna3, bawah):
     os.system('cls || clear')  
 
@@ -50,9 +49,9 @@ def menu(judul, subjudul, isi, isi2):
     print(atas)
     print(panjang)
     print(f'|{judul:^{105}}|', end = '')
-    print(subjudul)
+    print(subjudul) 
     print(tengah, end = '')
-    print(isi, end = '')
+    print(isi, end = '') 
     print(isi2)
     print(panjang)
 
@@ -82,4 +81,4 @@ def lenerror(isi1, isi2):
                 print(isi2)
                 
 
-            
+

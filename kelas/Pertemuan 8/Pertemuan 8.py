@@ -54,7 +54,9 @@ from time import sleep
 # gem(input('1. Gunting \n2. Kertas \n3. Batu \nPilihan mu: '))
 while True:
     xpoints = np.array([1, 1844])
-    ypoints = np.array([1, randint(3,10), randint(3,10), randint(3,10), randint(7,20), randint(7,20), randint(7,25), randint(12,35), randint(12,35), randint(12,15), randint(9,15), randint(9,15), randint(9,15), randint(5,15), randint(5,10), randint(5,10), randint(2,8), randint(2,8), randint(2,8)])
+    ypoints = np.array([1, randint(3,10), randint(3,10), randint(3,10), randint(7,20), randint(7,20), randint(7,25), randint(12,35), randint(12,35), randint(12,15), randint(9,15), randint(9,15), randint(9,15), randint(5,15), randint(5,10), randint(5,10), randint(2,8), randint(2,8), randint(2,8), 
+                        randint(3,10), randint(3,10), randint(3,10), randint(7,20), randint(7,20), randint(7,25), randint(12,35), randint(12,35), randint(12,15), randint(9,15), randint(9,15), randint(9,15), randint(5,15), randint(5,10), randint(5,10), randint(2,8), randint(2,8), randint(2,8),
+                        randint(3,10), randint(3,10), randint(3,10), randint(7,20), randint(7,20), randint(7,25), randint(12,35), randint(12,35), randint(12,15), randint(9,15), randint(9,15), randint(9,15), randint(5,15), randint(5,10), randint(5,10), randint(2,8), randint(2,8), randint(2,8)])
     plt.plot(ypoints)
     plt.show()
     

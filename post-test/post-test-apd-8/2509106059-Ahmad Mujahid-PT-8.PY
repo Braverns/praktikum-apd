@@ -6,7 +6,8 @@ from rekursif import *
 from CRUD import *
 from login import *
 from menu import *
-        
+
+
 while True:
     print(pretable('                                              THE BLACKSMITH                                              ', 
                    '                          Through fire and hammer, the blacksmith shapes the world.                       ',
@@ -102,8 +103,9 @@ while True:
                                         continue
 
                                     else:
+                                        nama_lama = senjata[id_terpilih]['nama']
                                         senjata[id_terpilih]['nama'] = nama_baru
-                                        print(f'|{f'{nama} telah diubah menjadi {nama_baru}':^{105}}|')
+                                        print(f'|{f'{nama_lama} telah diubah menjadi {nama_baru}':^{105}}|')
                                         print(tengah)
                                         reset('|Enter untuk kembali ke menu ...')
                                         continue
@@ -253,7 +255,7 @@ while True:
                     try:
                         if not pilihanurid.isdigit() or int(pilihanurid) <= 0 or int(pilihanurid) > len(data_murid):
                             raise ValueError(salah(f'|{'Pilihan tidak tersedia!':^{105}}|'))
-
+                        
                         pilihanurid = int(pilihanurid)
                         username_terpilih = list(data_murid.keys())[pilihanurid - 1]
                         murid = data_murid[username_terpilih]
@@ -576,7 +578,7 @@ while True:
 
     elif answer == '3':
         menu('GERBANG PENDAFTARAN MURID', '', '', '')
-        uns, pws = userpass('Buat ')
+        uns, pws = userpass('Buat ') 
 
         if uns.strip() == '' or pws.strip() == '' or uns == pws or len(uns) > 70 or len(pws) > 12 or ' ' in pws: 
             menu('LOGIN GAGAL!','', 
